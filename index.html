@@ -4,126 +4,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>belajar</title>
-    <link rel="stylesheet" href="style.css">
+    <title>HTML Learning Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: titleSlide 1s ease-out;
+        }
+
+        @keyframes titleSlide {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            animation: subtitleSlide 1s ease-out 0.3s both;
+        }
+
+        @keyframes subtitleSlide {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Navigation Grid */
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .nav-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: cardSlide 0.8s ease-out both;
+        }
+
+        .nav-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .nav-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .nav-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .nav-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .nav-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .nav-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes cardSlide {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .nav-item .title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .nav-item .description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+            animation: searchSlide 1s ease-out 0.5s both;
+        }
+
+        @keyframes searchSlide {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            animation: statsSlide 1s ease-out 0.7s both;
+        }
+
+        @keyframes statsSlide {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        /* Hidden class for search functionality */
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>hallo</h1>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
 
-    <a href="html/API.html">halaman api</a>
-    <a href="html/attributes.html">halaman attributes</a>
-    <a href="html/Audio.html">halaman audio</a>
-    <a href="html/basic.html">halaman basic</a>
-    <a href="html/Block and Inline Elements.html">halan bloc and inline</a>
-    <a href="html/canva.html">halaman canva</a>
-    <a href="html/Character .html">halaman character</a>
-    <a href="html/class Attribute.html">halaman attribute</a>
-    <a href="html/Colors.html">halaman color</a>
-    <a href="html/Comments.html">halaman comment</a>
-    <a href="html/Computer Code.html">halaman computer code</a>
-    <a href="html/API.html">halaman api</a>
-    <a href="html/css.html">halaman css</a>
-    <a href="html/Div Element.html">halaman div element</a>
-    <a href="html/Drag and Drop API.html">halaman drag and drop api</a>
-    <a href="html/editor.html">halaman editor </a>
-    <a href="html/element.html">halaman element</a>
-    <a href="html/Emojis .html">halaman emoji</a>
-    <a href="html/Entities.html">halaman Entities</a>
-    <a href="html/Favicon.html">halaman favicon </a>
-    <a href="html/File Paths.html">halaman file</a>
-    <a href="html/Form Attributes.html">halaman form attribute</a>
-    <a href="html/Form Elements.html">halaman aform element</a>
-    <a href="html/Formatting.html">halaman Formatting</a>
-    <a href="html/Forms.html">halaman forms</a>
-    <a href="html/Geolocation API.html">halaman geolocation api</a>
-    <a href="html/Head .html">halaman head</a>
-    <a href="html/heading.html">halaman heading</a>
-    <a href="html/home.html">halaman home</a>
-    <a href="html/HTML Versus XHTML.html">halaman html versus xhtml</a>
-    <a href="html/id Attribute.html">halaman id attribute</a>
-    <a href="html/Images.html">halaman images</a>
-    <a href="html/Input form Attributes.html">halaman input form attribute</a>
-    <a href="html/Input Types.html">halaman input type</a>
-    <a href="html/introduction.html">halaman introduction</a>
-    <a href="html/JavaScript.html">halaman javascript</a>
-    <a href="html/Layout.html">halaman layout</a>
-    <a href="html/Links.html">halaman links</a>
-    <a href="html/Lists.html">halaman list</a>
-    <a href="html/Multimedia.html">halaman multipedia</a>
-    <a href="html/Page Title.html">halaman page title</a>
-    <a href="html/paragpras.html">halaman paragpras</a>
-    <a href="html/Plug-ins.html">halaman plug ins</a>
-    <a href="html/Quotation .html">halaman quotation</a>
-    <a href="html/Responsive.html">halaman responsive</a>
-    <a href="html/Semantic .html">halaman semantic</a>
-    <a href="html/SSE.html">halaman sse</a>
-    <a href="html/Style Guide.html">halaman guide</a>
-    <a href="html/Styles.html">halaman stle</a>
-    <a href="html/SVG.html">halaman svg</a>
-    <a href="html/Symbols.html">halaman symbol</a>
-    <a href="html/Tables.html">halaman tables</a>
-    <a href="html/URL.html">halaman url</a>
-    <a href="html/vidio.html">halaman vidio</a>
-    <a href="html/Web Storage API.html">halaman web storage</a>
-    <a href="html/Web Workers API.html">halaman workers</a>
+    <!-- Header -->
+    <div class="header">
+        <h1 class="title">HTML Learning Hub</h1>
+        <p class="subtitle">Master HTML with Interactive Lessons</p>
+    </div>
 
+    <!-- Search Bar -->
+    <div class="nav-container">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for HTML topics..." id="searchInput">
+            <span class="search-icon">🔍</span>
+        </div>
 
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="totalTopics">50+</span>
+                <span class="stat-label">Topics</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Free</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Available</span>
+            </div>
+        </div>
 
+        <!-- Navigation Grid -->
+        <div class="nav-grid" id="navGrid">
+            <a href="html/API.html" class="nav-item" data-keywords="api web development">
+                <span class="icon">🔗</span>
+                <div class="title">API</div>
+                <div class="description">Learn about HTML5 APIs and web development interfaces</div>
+            </a>
 
+            <a href="html/attributes.html" class="nav-item" data-keywords="attributes html properties">
+                <span class="icon">🏷️</span>
+                <div class="title">Attributes</div>
+                <div class="description">Master HTML attributes and their properties</div>
+            </a>
 
+            <a href="html/Audio.html" class="nav-item" data-keywords="audio multimedia sound">
+                <span class="icon">🎵</span>
+                <div class="title">Audio</div>
+                <div class="description">Work with audio elements and multimedia</div>
+            </a>
 
+            <a href="html/basic.html" class="nav-item" data-keywords="basic fundamentals beginner">
+                <span class="icon">📚</span>
+                <div class="title">Basic HTML</div>
+                <div class="description">Start with HTML fundamentals and basics</div>
+            </a>
 
+            <a href="html/Block and Inline Elements.html" class="nav-item" data-keywords="block inline elements layout">
+                <span class="icon">📦</span>
+                <div class="title">Block & Inline</div>
+                <div class="description">Understand block and inline elements</div>
+            </a>
 
+            <a href="html/canva.html" class="nav-item" data-keywords="canvas graphics drawing">
+                <span class="icon">🎨</span>
+                <div class="title">Canvas</div>
+                <div class="description">Create graphics and animations with canvas</div>
+            </a>
 
+            <a href="html/Character .html" class="nav-item" data-keywords="character entities symbols">
+                <span class="icon">🔤</span>
+                <div class="title">Characters</div>
+                <div class="description">Learn about character entities and symbols</div>
+            </a>
 
+            <a href="html/class Attribute.html" class="nav-item" data-keywords="class attribute css styling">
+                <span class="icon">🎯</span>
+                <div class="title">Class Attribute</div>
+                <div class="description">Master CSS classes and styling</div>
+            </a>
 
+            <a href="html/Colors.html" class="nav-item" data-keywords="colors styling design">
+                <span class="icon">🌈</span>
+                <div class="title">Colors</div>
+                <div class="description">Work with colors and color schemes</div>
+            </a>
 
+            <a href="html/Comments.html" class="nav-item" data-keywords="comments documentation code">
+                <span class="icon">💬</span>
+                <div class="title">Comments</div>
+                <div class="description">Document your code with comments</div>
+            </a>
 
+            <a href="html/Computer Code.html" class="nav-item" data-keywords="code programming syntax">
+                <span class="icon">💻</span>
+                <div class="title">Computer Code</div>
+                <div class="description">Display code and programming syntax</div>
+            </a>
 
+            <a href="html/css.html" class="nav-item" data-keywords="css styling design layout">
+                <span class="icon">🎨</span>
+                <div class="title">CSS</div>
+                <div class="description">Style your HTML with CSS</div>
+            </a>
 
+            <a href="html/Forms.html" class="nav-item" data-keywords="forms input user interaction">
+                <span class="icon">📝</span>
+                <div class="title">Forms</div>
+                <div class="description">Create interactive forms and user input</div>
+            </a>
 
+            <a href="html/Images.html" class="nav-item" data-keywords="images graphics media">
+                <span class="icon">🖼️</span>
+                <div class="title">Images</div>
+                <div class="description">Work with images and graphics</div>
+            </a>
 
+            <a href="html/JavaScript.html" class="nav-item" data-keywords="javascript programming interactive">
+                <span class="icon">⚡</span>
+                <div class="title">JavaScript</div>
+                <div class="description">Add interactivity with JavaScript</div>
+            </a>
 
+            <a href="html/Tables.html" class="nav-item" data-keywords="tables data structure">
+                <span class="icon">📊</span>
+                <div class="title">Tables</div>
+                <div class="description">Create and style data tables</div>
+            </a>
+        </div>
+    </div>
 
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
 
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
 
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const navItems = document.querySelectorAll('.nav-item');
 
+            searchInput.addEventListener('input', function () {
+                const query = this.value.toLowerCase();
 
+                navItems.forEach(item => {
+                    const title = item.querySelector('.title').textContent.toLowerCase();
+                    const description = item.querySelector('.description').textContent.toLowerCase();
+                    const keywords = item.dataset.keywords.toLowerCase();
 
+                    if (title.includes(query) || description.includes(query) || keywords.includes(query)) {
+                        item.style.display = 'block';
+                        item.style.animation = 'cardSlide 0.5s ease-out';
+                    } else {
+                        item.style.display = query === '' ? 'block' : 'none';
+                    }
+                });
+            });
+        }
 
+        // Count animation for stats
+        function animateStats() {
+            const totalTopics = document.getElementById('totalTopics');
+            let count = 0;
+            const target = 50;
 
+            const timer = setInterval(() => {
+                count++;
+                totalTopics.textContent = count + '+';
 
+                if (count >= target) {
+                    clearInterval(timer);
+                }
+            }, 50);
+        }
 
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function () {
+            createParticles();
+            setupSearch();
+            setTimeout(animateStats, 1000);
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <p>halaman awal</p>
-    <script src="script.js"></script>
+        // Add hover sound effect (optional)
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                // You can add a subtle sound effect here if desired
+            });
+        });
+    </script>
 </body>
 
 </html>
