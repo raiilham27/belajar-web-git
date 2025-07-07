@@ -1,27 +1,159 @@
-The HTML <video> Element
-    To show a video in HTML, use the <video> element:
+<!DOCTYPE html>
+<html lang="en">
 
-        Example
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Video Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+        }
+
+        video {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .controls button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            background: #3498db;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📽️ Belajar HTML Video</h1>
+
+    <div class="section">
+        <h2>1. Video Dasar dengan Kontrol</h2>
         <video width="320" height="240" controls>
             <source src="movie.mp4" type="video/mp4">
             <source src="movie.ogg" type="video/ogg">
+            Browser Anda tidak mendukung video tag.
+        </video>
+        <p><b>Penjelasan:</b> Video ini menggunakan tag <code>&lt;video&gt;</code> dengan atribut <code>controls</code>
+            untuk memunculkan tombol play, pause, dan volume.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. Video Autoplay dan Muted</h2>
+        <video width="320" height="240" autoplay muted loop>
+            <source src="movie.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Browser Anda tidak mendukung video tag.
+        </video>
+        <p><b>Catatan:</b> Autoplay hanya bekerja jika video dalam kondisi <code>muted</code>. Atribut <code>loop</code>
+            digunakan agar video terus diputar ulang.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. Format Video yang Didukung</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Browser</th>
+                    <th>MP4</th>
+                    <th>WebM</th>
+                    <th>Ogg</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chrome</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Firefox</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Safari</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Edge</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Opera</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>4. Kontrol Video dengan JavaScript</h2>
+        <video id="myVideo" width="320" height="240" controls>
+            <source src="movie.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        HTML <video> Autoplay
-            To start a video automatically, use the autoplay attribute:
+        <div class="controls">
+            <button onclick="playVideo()">Play</button>
+            <button onclick="pauseVideo()">Pause</button>
+        </div>
+        <script>
+            const myVideo = document.getElementById("myVideo");
 
-            Example
-            <video width="320" height="240" autoplay>
-                <source src="movie.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-                Your browser does not support the video tag.
-            </video>
+            function playVideo() {
+                myVideo.play();
+            }
 
-            Add muted after autoplay to let your video start playing automatically (but muted):
+            function pauseVideo() {
+                myVideo.pause();
+            }
+        </script>
+    </div>
 
-            Example
-            <video width="320" height="240" autoplay muted>
-                <source src="movie.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
-                Your browser does not support the video tag.
-            </video>
+</body>
+
+</html>
