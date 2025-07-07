@@ -1,22 +1,56 @@
-The HTML <audio> Element
-    To play an audio file in HTML, use the <audio> element:
+<!DOCTYPE html>
+<html lang="id">
 
-        Example
-        <audio controls>
-            <source src="horse.ogg" type="audio/ogg">
-            <source src="horse.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>HTML <audio> Autoplay
-            To start an audio file automatically, use the autoplay attribute:
+<head>
+    <meta charset="UTF-8">
+    <title>Putar Audio Otomatis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #2e3192, #1bffff);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-            Example
-            <audio controls autoplay>
-                <source src="horse.ogg" type="audio/ogg">
-                <source src="horse.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <audio controls autoplay muted>
-                <source src="horse.ogg" type="audio/ogg">
-                <source src="horse.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+        h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #2e3192;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Klik untuk Memutar Audio!</h1>
+    <button onclick="playAudio()">▶️ Putar Sekarang</button>
+
+    <audio id="myAudio" src="/rendom.mp3.mp3"></audio>
+
+    <script>
+        function playAudio() {
+            const audio = document.getElementById('myAudio');
+            audio.play();
+        }
+    </script>
+</body>
+
+</html>
