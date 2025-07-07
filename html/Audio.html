@@ -1,56 +1,14 @@
 <!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Putar Audio Otomatis</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #2e3192, #1bffff);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 30px;
-        }
-
-        button {
-            background-color: #ffffff;
-            color: #2e3192;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #ddd;
-        }
-    </style>
-</head>
+<html>
 
 <body>
-    <h1>Klik untuk Memutar Audio!</h1>
-    <button onclick="playAudio()">▶️ Putar Sekarang</button>
 
-    <audio id="myAudio" src="/rendom.mp3"></audio>
+    <audio controls>
+        <source src="/rendom.mp3" type="/rendom.mp3">
+        <source src="/rendom.mp3" type="/rendom.mp3">
+        Your browser does not support the audio element.
+    </audio>
 
-    <script>
-        function playAudio() {
-            const audio = document.getElementById('myAudio');
-            audio.play();
-        }
-    </script>
 </body>
 
 </html>
