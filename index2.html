@@ -1,548 +1,782 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daftar Halaman CSS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Learning Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(64, 123, 255, 0.15);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            box-shadow: 0 0 10px rgba(64, 123, 255, 0.3);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(64, 123, 255, 0.3);
+            animation: titleSlide 1s ease-out;
+        }
+
+        @keyframes titleSlide {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            animation: subtitleSlide 1s ease-out 0.3s both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes subtitleSlide {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Main container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+            animation: searchSlide 1s ease-out 0.5s both;
+        }
+
+        @keyframes searchSlide {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid rgba(64, 123, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(26, 26, 46, 0.4);
+            backdrop-filter: blur(15px);
+            color: #ffffff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-input:focus {
+            background: rgba(64, 123, 255, 0.1);
+            border-color: rgba(64, 123, 255, 0.6);
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(64, 123, 255, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(64, 123, 255, 0.8);
+            font-size: 1.2rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            animation: statsSlide 1s ease-out 0.7s both;
+        }
+
+        @keyframes statsSlide {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .stat-item {
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+            color: #64d8ff;
+            text-shadow: 0 0 20px rgba(100, 216, 255, 0.5);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Navigation Grid */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .nav-item {
+            background: rgba(26, 26, 46, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(64, 123, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: cardSlide 0.8s ease-out both;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .nav-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .nav-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .nav-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .nav-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .nav-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .nav-item:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .nav-item:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .nav-item:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .nav-item:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .nav-item:nth-child(11) {
+            animation-delay: 1.1s;
+        }
+
+        .nav-item:nth-child(12) {
+            animation-delay: 1.2s;
+        }
+
+        .nav-item:nth-child(13) {
+            animation-delay: 1.3s;
+        }
+
+        .nav-item:nth-child(14) {
+            animation-delay: 1.4s;
+        }
+
+        .nav-item:nth-child(15) {
+            animation-delay: 1.5s;
+        }
+
+        .nav-item:nth-child(16) {
+            animation-delay: 1.6s;
+        }
+
+        .nav-item:nth-child(17) {
+            animation-delay: 1.7s;
+        }
+
+        .nav-item:nth-child(18) {
+            animation-delay: 1.8s;
+        }
+
+        .nav-item:nth-child(19) {
+            animation-delay: 1.9s;
+        }
+
+        .nav-item:nth-child(20) {
+            animation-delay: 2.0s;
+        }
+
+        @keyframes cardSlide {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 123, 255, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(64, 123, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(64, 123, 255, 0.3);
+            border-color: rgba(64, 123, 255, 0.5);
+        }
+
+        .nav-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .nav-item .item-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .nav-item .description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(64, 123, 255, 0.2);
+            margin-top: 60px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .header {
+                padding: 40px 20px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .nav-item {
+                padding: 20px;
+            }
+
+            .search-input {
+                padding: 12px 40px 12px 15px;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800 p-8">
+<body>
+    <!-- Animated particles background -->
+    <div class="particles" id="particles"></div>
 
-    <div class="max-w-2xl mx-auto">
-        <h1 class="text-2xl font-bold mb-6 text-center">📁 Daftar File CSS</h1>
-
-        <ul class="space-y-3">
-            <li>
-                <a href="css/2D Transforms.css"
-                    class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                    <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                    2D Transforms.css
-                </a>
-            </li>
-            <li>
-                <a href="css/3D Transforms.css"
-                    class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                    <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                    Animations.css
-                </a>
-            </li>
-            <li>
-                <a href="css/Accessibility.css"
-                    class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                    <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                    Layout.css
-                </a>
-            </li>
-            <li>
-                <a href="css/Align.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                    <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                    Typography.css
-                </a>
-            </li>
-
-            <a href="css/Animations.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Attachment.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-
-            <a href="css/Attribute Selectors.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-
-            <a href="css/Attribute Selectors.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/backgroun.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Border Images.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Borders.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Box Model.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Box Sizing.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/button.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Centering Images.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Color Keywords.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Colors.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Colorss.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-
-            <a href="css/Combinators.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Comments.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Conic Gradients.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Counters.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/display.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-
-            <a href="css/Dropdowns.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <!--  -->
-
-            <a href="css/Errors.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-
-            <a href="css/Flex Container.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Flex Items.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li><a href="css/Align.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Flexbox.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/float.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Font Fallbacks.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Fonts.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Forms.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Function.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Gradients.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Grid .css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Grid Columns, Rows.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Grid Container.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Grid Item.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Grid View.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Height, Width.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/home.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/How To.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <!--  -->
-            <a href="css/Icons.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/image filter.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Image Gallery.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Image Shapes.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Image Sprites.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/important.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/inline-block.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/introdu.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Margins.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Masking.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Math Functions.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/max-width.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Media .css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Media Queries.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Multiple Columns.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Navigation Bar.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <!--  -->
-            <a href="css/object-fit.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Opacity.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Outline.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Overriding Variables.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Padding.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Pagination.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Performance.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/property.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Pseudo-classes.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Pseudo-elements.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Querie.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Radial Gradients.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Responsive Flexbox.css"
-                class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Responsive.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Rounded .css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/rwd-Frameworks.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <!--  -->
-            <a href="css/rwd-images.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/rwd-Templates.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/rwd-vidio.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Selectors.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Shadow Effects.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Specificity.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Styling Images.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/supports Rule.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Syntax.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Tables.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Text Effects.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Text Spacing.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Text.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Tooltip.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Transitions.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Units.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/User Interface.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-            <a href="css/Viewport.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Web Fonts.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-            <a href="css/Website Layout.css" class="flex items-center p-4 bg-white rounded-lg shadow hover:bg-blue-50">
-                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 mr-3"></i>
-                Typography.css
-            </a>
-            </li>
-
-        </ul>
+    <!-- Header -->
+    <div class="header">
+        <h1 class="title">CSS Learning Hub</h1>
+        <p class="subtitle">Master CSS with Comprehensive Lessons</p>
     </div>
 
-    <script>
-        lucide.createIcons();
-    </script>
-</body>
+    <!-- Main container -->
+    <div class="main-container">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search CSS topics...">
+            <span class="search-icon">🔍</span>
+        </div>
 
-</html>
+
+        <!-- Navigation Grid -->
+        <div class="nav-grid" id="navGrid">
+            <a href="css/2D Transforms.css" class="nav-item" data-keywords="2d transforms rotation scale">
+                <span class="icon">🔄</span>
+                <div class="item-title">2D Transforms</div>
+                <div class="description">Learn rotation, scaling, and transformation techniques</div>
+            </a>
+
+            <a href="css/3D Transforms.css" class="nav-item" data-keywords="3d transforms perspective depth">
+                <span class="icon">🎲</span>
+                <div class="item-title">3D Transforms</div>
+                <div class="description">Master 3D transformations and perspective effects</div>
+            </a>
+
+            <a href="css/Accessibility.css" class="nav-item" data-keywords="accessibility a11y inclusive design">
+                <span class="icon">♿</span>
+                <div class="item-title">Accessibility</div>
+                <div class="description">Create inclusive and accessible web experiences</div>
+            </a>
+
+            <a href="css/Align.css" class="nav-item" data-keywords="align alignment layout positioning">
+                <span class="icon">⚖️</span>
+                <div class="item-title">Alignment</div>
+                <div class="description">Master element alignment and positioning</div>
+            </a>
+
+            <a href="css/Animations.css" class="nav-item" data-keywords="animations keyframes motion">
+                <span class="icon">🎭</span>
+                <div class="item-title">Animations</div>
+                <div class="description">Create smooth animations and motion effects</div>
+            </a>
+
+            <a href="css/Attachment.css" class="nav-item" data-keywords="attachment background fixed">
+                <span class="icon">📎</span>
+                <div class="item-title">Attachment</div>
+                <div class="description">Control background attachment and scrolling</div>
+            </a>
+
+            <a href="css/Attribute Selectors.css" class="nav-item" data-keywords="attribute selectors targeting">
+                <span class="icon">🎯</span>
+                <div class="item-title">Attribute Selectors</div>
+                <div class="description">Target elements using attribute selectors</div>
+            </a>
+
+            <a href="css/backgroun.css" class="nav-item" data-keywords="background images gradients">
+                <span class="icon">🌄</span>
+                <div class="item-title">Backgrounds</div>
+                <div class="description">Style backgrounds with images and gradients</div>
+            </a>
+
+            <a href="css/Border Images.css" class="nav-item" data-keywords="border images decorative">
+                <span class="icon">🖼️</span>
+                <div class="item-title">Border Images</div>
+                <div class="description">Create decorative borders using images</div>
+            </a>
+
+            <a href="css/Borders.css" class="nav-item" data-keywords="borders outline styling">
+                <span class="icon">🔲</span>
+                <div class="item-title">Borders</div>
+                <div class="description">Style element borders and outlines</div>
+            </a>
+
+            <a href="css/Box Model.css" class="nav-item" data-keywords="box model padding margin">
+                <span class="icon">📦</span>
+                <div class="item-title">Box Model</div>
+                <div class="description">Understand the CSS box model fundamentals</div>
+            </a>
+
+            <a href="css/Box Sizing.css" class="nav-item" data-keywords="box sizing border-box">
+                <span class="icon">📏</span>
+                <div class="item-title">Box Sizing</div>
+                <div class="description">Control how element sizes are calculated</div>
+            </a>
+
+            <a href="css/button.css" class="nav-item" data-keywords="buttons interactive elements">
+                <span class="icon">🔘</span>
+                <div class="item-title">Buttons</div>
+                <div class="description">Design beautiful and interactive buttons</div>
+            </a>
+
+            <a href="css/Centering Images.css" class="nav-item" data-keywords="centering images alignment">
+                <span class="icon">🖼️</span>
+                <div class="item-title">Centering Images</div>
+                <div class="description">Center images using various techniques</div>
+            </a>
+
+            <a href="css/Color Keywords.css" class="nav-item" data-keywords="color keywords names">
+                <span class="icon">🎨</span>
+                <div class="item-title">Color Keywords</div>
+                <div class="description">Use predefined color keywords and names</div>
+            </a>
+
+            <a href="css/Colors.css" class="nav-item" data-keywords="colors hex rgb hsl">
+                <span class="icon">🌈</span>
+                <div class="item-title">Colors</div>
+                <div class="description">Master color values and color theory</div>
+            </a>
+
+            <a href="css/Colorss.css" class="nav-item" data-keywords="colors advanced theory">
+                <span class="icon">🎨</span>
+                <div class="item-title">Advanced Colors</div>
+                <div class="description">Advanced color techniques and theory</div>
+            </a>
+
+            <a href="css/Combinators.css" class="nav-item" data-keywords="combinators selectors relationship">
+                <span class="icon">🔗</span>
+                <div class="item-title">Combinators</div>
+                <div class="description">Use selector combinators and relationships</div>
+            </a>
+
+            <a href="css/Comments.css" class="nav-item" data-keywords="comments documentation">
+                <span class="icon">💬</span>
+                <div class="item-title">Comments</div>
+                <div class="description">Document your CSS with comments</div>
+            </a>
+
+            <a href="css/Conic Gradients.css" class="nav-item" data-keywords="conic gradients circular">
+                <span class="icon">🌀</span>
+                <div class="item-title">Conic Gradients</div>
+                <div class="description">Create circular and conic gradient effects</div>
+            </a>
+
+            <a href="css/Counters.css" class="nav-item" data-keywords="counters automatic numbering">
+                <span class="icon">🔢</span>
+                <div class="item-title">Counters</div>
+                <div class="description">Implement automatic numbering and counters</div>
+            </a>
+
+            <a href="css/display.css" class="nav-item" data-keywords="display block inline flex">
+                <span class="icon">📺</span>
+                <div class="item-title">Display</div>
+                <div class="description">Control element display properties</div>
+            </a>
+
+            <a href="css/Dropdowns.css" class="nav-item" data-keywords="dropdowns menus navigation">
+                <span class="icon">📋</span>
+                <div class="item-title">Dropdowns</div>
+                <div class="description">Create dropdown menus and navigation</div>
+            </a>
+
+            <a href="css/Errors.css" class="nav-item" data-keywords="errors debugging troubleshooting">
+                <span class="icon">🚨</span>
+                <div class="item-title">CSS Errors</div>
+                <div class="description">Debug and troubleshoot CSS issues</div>
+            </a>
+
+            <a href="css/Flex Container.css" class="nav-item" data-keywords="flexbox container layout">
+                <span class="icon">📦</span>
+                <div class="item-title">Flex Container</div>
+                <div class="description">Master flexbox container properties</div>
+            </a>
+
+            <a href="css/Flex Items.css" class="nav-item" data-keywords="flex items children">
+                <span class="icon">📑</span>
+                <div class="item-title">Flex Items</div>
+                <div class="description">Control flex item behavior and sizing</div>
+            </a>
+
+            <a href="css/Flexbox.css" class="nav-item" data-keywords="flexbox layout modern">
+                <span class="icon">🗂️</span>
+                <div class="item-title">Flexbox</div>
+                <div class="description">Master modern flexbox layouts</div>
+            </a>
+
+            <a href="css/float.css" class="nav-item" data-keywords="float positioning legacy">
+                <span class="icon">🎈</span>
+                <div class="item-title">Float</div>
+                <div class="description">Understand float positioning and clearing</div>
+            </a>
+
+            <a href="css/Font Fallbacks.css" class="nav-item" data-keywords="fonts fallbacks typography">
+                <span class="icon">🔤</span>
+                <div class="item-title">Font Fallbacks</div>
+                <div class="description">Implement font fallback strategies</div>
+            </a>
+
+            <a href="css/Fonts.css" class="nav-item" data-keywords="fonts typography text styling">
+                <span class="icon">📝</span>
+                <div class="item-title">Fonts</div>
+                <div class="description">Master font styling and typography</div>
+            </a>
+
+            <a href="css/Forms.css" class="nav-item" data-keywords="forms input styling">
+                <span class="icon">📋</span>
+                <div class="item-title">Forms</div>
+                <div class="description">Style forms and input elements</div>
+            </a>
+
+            <a href="css/Function.css" class="nav-item" data-keywords="functions calc var">
+                <span class="icon">⚙️</span>
+                <div class="item-title">CSS Functions</div>
+                <div class="description">Use CSS functions like calc() and var()</div>
+            </a>
+
+            <a href="css/Gradients.css" class="nav-item" data-keywords="gradients linear radial">
+                <span class="icon">🌅</span>
+                <div class="item-title">Gradients</div>
+                <div class="description">Create linear and radial gradients</div>
+            </a>
+
+            <a href="css/Grid .css" class="nav-item" data-keywords="grid layout modern">
+                <span class="icon">⚏</span>
+                <div class="item-title">CSS Grid</div>
+                <div class="description">Master CSS Grid layout system</div>
+            </a>
+
+            <a href="css/Grid Columns, Rows.css" class="nav-item" data-keywords="grid columns rows structure">
+                <span class="icon">📊</span>
+                <div class="item-title">Grid Structure</div>
+                <div class="description">Define grid columns and rows</div>
+            </a>
+
+            <a href="css/Grid Container.css" class="nav-item" data-keywords="grid container parent">
+                <span class="icon">🗃️</span>
+                <div class="item-title">Grid Container</div>
+                <div class="description">Configure grid container properties</div>
+            </a>
+
+            <a href="css/Grid Item.css" class="nav-item" data-keywords="grid items placement">
+                <span class="icon">🎯</span>
+                <div class="item-title">Grid Items</div>
+                <div class="description">Position and size grid items</div>
+            </a>
+
+            <a href="css/Grid View.css" class="nav-item" data-keywords="grid view layout responsive">
+                <span class="icon">🏗️</span>
+                <div class="item-title">Grid Views</div>
+                <div class="description">Create responsive grid-based layouts</div>
+            </a>
+
+            <a href="css/Height, Width.css" class="nav-item" data-keywords="height width dimensions">
+                <span class="icon">📐</span>
+                <div class="item-title">Dimensions</div>
+                <div class="description">Control element height and width</div>
+            </a>
+
+            <a href="css/How To.css" class="nav-item" data-keywords="how to tutorials guides">
+                <span class="icon">📚</span>
+                <div class="item-title">How-To Guides</div>
+                <div class="description">Step-by-step CSS tutorials</div>
+            </a>
+
+            <a href="css/Icons.css" class="nav-item" data-keywords="icons symbols graphics">
+                <span class="icon">🎨</span>
+                <div class="item-title">Icons</div>
+                <div class="description">Style and integrate icons effectively</div>
+            </a>
+
+            <a href="css/image filter.css" class="nav-item" data-keywords="image filters effects">
+                <span class="icon">🎭</span>
+                <div class="item-title">Image Filters</div>
+                <div class="description">Apply filters and effects to images</div>
+            </a>
+
+            <a href="css/Image Gallery.css" class="nav-item" data-keywords="image gallery showcase">
+                <span class="icon">🖼️</span>
+                <div class="item-title">Image Gallery</div>
+                <div class="description">Create beautiful image galleries</div>
+            </a>
+
+            <a href="css/Image Shapes.css" class="nav-item" data-keywords="image shapes clipping">
+                <span class="icon">🔺</span>
+                <div class="item-title">Image Shapes</div>
+                <div class="description">Create custom image shapes and clipping</div>
+            </a>
+
+            <a href="css/Image Sprites.css" class="nav-item" data-keywords="image sprites optimization">
+                <span class="icon">🎮</span>
+                <div class="item-title">Image Sprites</div>
+                <div class="description">Optimize images using sprite techniques</div>
+            </a>
+
+            <a href="css/important.css" class="nav-item" data-keywords="important priority specificity">
+                <span class="icon">❗</span>
+                <div class="item-title">!important</div>
+                <div class="description">Understand CSS priority and specificity</div>
+            </a>
+
+            <a href="css/inline-block.css" class="nav-item" data-keywords="inline-block display">
+                <span class="icon">📱</span>
+                <div class="item-title">Inline-Block</div>
+                <div class="description">Master inline-block display properties</div>
+            </a>
+
+            <a href="css/introdu.css" class="nav-item" data-keywords="introduction basics fundamentals">
+                <span class="icon">🌟</span>
+                <div class="item-title">CSS Introduction</div>
+                <div class="description">Learn CSS fundamentals and basics</div>
+            </a>
+
+            <a href="css/Margins.css" class="nav-item" data-keywords="margins spacing layout">
+                <span class="icon">📏</span>
+                <div class="item-title">Margins</div>
+                <div class="description">Control element margins and spacing</div>
+            </a>
+
+            <a href="css/Masking.css" class="nav-item" data-keywords="masking clipping advanced">
+                <span class="icon">🎭</span>
+                <div class="item-title">Masking</div>
+                <div class="description">Apply masking and clipping techniques</div>
+            </a>
+
+            <a href="css/Math Functions.css" class="nav-item" data-keywords="math functions calc min max">
+                <span class="icon">🧮</span>
+                <div class="item-title">Math Functions</div>
+                <div class="description">Use mathematical functions in CSS</div>
+            </a>
+
+            <a href="css/max-width.css" class="nav-item" data-keywords="max-width responsive">
+                <span class="icon">📱</span>
+                <div class="item-title">Max-Width</div>
+                <div class="description">Control maximum element widths</div>
+            </a>
+
+            <a href="css/Media .css" class="nav-item" data-keywords="media queries responsive">
+                <span class="icon">📱</span>
+                <div class="item-title">Media Queries</div>
+                <div class="description">Create responsive designs with media queries</div>
+            </a>
+
+            <a href="css/Media Queries.css" class="nav-item" data-keywords="media queries breakpoints">
+                <span class="icon">💻</span>
+                <div class="item-title">Media Query Breakpoints</div>
+                <div class="description">Master responsive breakpoints</div>
+            </a>
+
+            <a href="css/Multiple Columns.css" class="nav-item" data-keywords="columns layout text">
+                <span class="icon">📰</span>
+                <div class="item-title">Multiple Columns</div>
+                <div class="description">Create multi-column text layouts</div>
+            </a>
+
+            <a href="css/Navigation Bar.css" class="nav-item" data-keywords="navigation menu bar">
+                <span class="icon">🧭</span>
+                <div class="item-title">Navigation Bar</div>
+                <div class="description">Build responsive navigation bars</div>
+            </a>
+
+            <a href="css/object-fit.css" class="nav
