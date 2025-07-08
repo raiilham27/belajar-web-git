@@ -1,0 +1,20 @@
+CSS Conic Gradients
+A conic gradient is a gradient with color transitions rotated around a center point.
+
+To create a conic gradient you must define at least two colors.
+
+Syntax
+background-image: conic-gradient([from angle] [at position,] color [degree], color [degree], ...);
+By default, angle is 0deg and position is center.
+
+If no degree is specified, the colors will be spread equally around the center point.
+
+Conic Gradient: Three Colors
+The following example shows a conic gradient with three colors:
+
+Example
+A conic gradient with three colors:
+
+#grad {
+  background-image: conic-gradient(red, yellow, green);
+}

@@ -1,0 +1,89 @@
+CSS Text Spacing
+Text Spacing
+In this chapter you will learn about the following properties:
+
+text-indent
+letter-spacing
+line-height
+word-spacing
+white-space
+Text Indentation
+The text-indent property is used to specify the indentation of the first line of a text:
+
+Example
+p {
+  text-indent: 50px;
+}
+Letter Spacing
+The letter-spacing property is used to specify the space between the characters in a text.
+
+The following example demonstrates how to increase or decrease the space between characters:
+
+Example
+h1 {
+  letter-spacing: 5px;
+}
+
+h2 {
+  letter-spacing: -2px;
+}
+Line Height
+The line-height property is used to specify the space between lines:
+
+Example
+p.small {
+  line-height: 0.8;
+}
+
+p.big {
+  line-height: 1.8;
+}
+Text Shadow
+The text-shadow property adds shadow to text.
+
+In its simplest use, you only specify the horizontal shadow (2px) and the vertical shadow (2px):
+
+Text shadow effect!
+Example
+h1 {
+  text-shadow: 2px 2px;
+}
+Next, add a color (red) to the shadow:
+
+Text shadow effect!
+Example
+h1 {
+  text-shadow: 2px 2px red;
+}
+Then, add a blur effect (5px) to the shadow:
+
+Text shadow effect!
+Example
+h1 {
+  text-shadow: 2px 2px 5px red;
+}
+More Text Shadow Examples
+Example 1
+Text-shadow on a white text:
+
+h1 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+Example 2
+Text-shadow with red neon glow:
+
+h1 {
+  text-shadow: 0 0 3px #ff0000;
+}
+Example 3
+Text-shadow with red and blue neon glow:
+
+h1 {
+  text-shadow: 0 0 3px #ff0000, 0 0 5px #0000ff;
+}
+Example 4
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
