@@ -1,12 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putar Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        video {
+            border: 5px solid #555;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
 
 <body>
 
-    <video width="320" height="240" controls>
+    <h1>Video Saya</h1>
+
+    <video width="640" height="360" controls>
         <source src="vidio.mp4.mp4" type="video/mp4">
         <source src="vidio.ogg" type="video/ogg">
-        Browser Anda tidak mendukung tag video.
+        Maaf, browser Anda tidak mendukung pemutaran video.
     </video>
 
 </body>
