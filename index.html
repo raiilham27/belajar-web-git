@@ -61,7 +61,7 @@
         /* Header */
         .header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px 40px;
             position: relative;
             z-index: 10;
         }
@@ -107,117 +107,13 @@
             }
         }
 
-        /* Navigation Grid */
-        .nav-container {
+        /* Main container */
+        .main-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
-        }
-
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-
-        .nav-item {
-            background: rgba(26, 26, 46, 0.4);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(64, 123, 255, 0.2);
-            border-radius: 20px;
-            padding: 25px;
-            text-decoration: none;
-            color: #ffffff;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            animation: cardSlide 0.8s ease-out both;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .nav-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .nav-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .nav-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .nav-item:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .nav-item:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes cardSlide {
-            0% {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(64, 123, 255, 0.15), transparent);
-            transition: left 0.6s;
-        }
-
-        .nav-item:hover::before {
-            left: 100%;
-        }
-
-        .nav-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(64, 123, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(64, 123, 255, 0.3);
-            border-color: rgba(64, 123, 255, 0.5);
-        }
-
-        .nav-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-item:hover .icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .nav-item .title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: capitalize;
-        }
-
-        .nav-item .description {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.4;
         }
 
         /* Search Bar */
@@ -243,7 +139,7 @@
         .search-input {
             width: 100%;
             padding: 15px 50px 15px 20px;
-            border: none;
+            border: 2px solid rgba(64, 123, 255, 0.3);
             border-radius: 50px;
             background: rgba(26, 26, 46, 0.4);
             backdrop-filter: blur(15px);
@@ -251,7 +147,6 @@
             font-size: 1.1rem;
             outline: none;
             transition: all 0.3s ease;
-            border: 2px solid rgba(64, 123, 255, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
@@ -316,10 +211,173 @@
             opacity: 0.8;
         }
 
+        /* Navigation Grid */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .nav-item {
+            background: rgba(26, 26, 46, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(64, 123, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            animation: cardSlide 0.8s ease-out both;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .nav-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .nav-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .nav-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .nav-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .nav-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .nav-item:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .nav-item:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .nav-item:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .nav-item:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .nav-item:nth-child(11) {
+            animation-delay: 1.1s;
+        }
+
+        .nav-item:nth-child(12) {
+            animation-delay: 1.2s;
+        }
+
+        .nav-item:nth-child(13) {
+            animation-delay: 1.3s;
+        }
+
+        .nav-item:nth-child(14) {
+            animation-delay: 1.4s;
+        }
+
+        .nav-item:nth-child(15) {
+            animation-delay: 1.5s;
+        }
+
+        .nav-item:nth-child(16) {
+            animation-delay: 1.6s;
+        }
+
+        .nav-item:nth-child(17) {
+            animation-delay: 1.7s;
+        }
+
+        @keyframes cardSlide {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 123, 255, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(64, 123, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(64, 123, 255, 0.3);
+            border-color: rgba(64, 123, 255, 0.5);
+        }
+
+        .nav-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .nav-item .item-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .nav-item .description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(64, 123, 255, 0.2);
+            margin-top: 60px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .title {
                 font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
             }
 
             .nav-grid {
@@ -330,11 +388,24 @@
                 flex-direction: column;
                 gap: 20px;
             }
+
+            .header {
+                padding: 40px 20px 30px;
+            }
         }
 
-        /* Hidden class for search functionality */
-        .hidden {
-            display: none !important;
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .nav-item {
+                padding: 20px;
+            }
+
+            .search-input {
+                padding: 12px 40px 12px 15px;
+            }
         }
     </style>
 </head>
@@ -349,115 +420,140 @@
         <p class="subtitle">Master HTML with Interactive Lessons</p>
     </div>
 
+    <!-- Main container -->
+    <div class="main-container">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search HTML topics...">
+            <span class="search-icon">🔍</span>
+        </div>
 
-    <!-- Navigation Grid -->
-    <div class="nav-grid" id="navGrid">
-        <a href="html/API.html" class="nav-item" data-keywords="api web development">
-            <span class="icon">🔗</span>
-            <div class="title">API</div>
-            <div class="description">Learn about HTML5 APIs and web development interfaces</div>
-        </a>
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="totalTopics">17+</span>
+                <span class="stat-label">HTML Topics</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Examples</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Possibilities</span>
+            </div>
+        </div>
 
-        <a href="html/attributes.html" class="nav-item" data-keywords="attributes html properties">
-            <span class="icon">🏷️</span>
-            <div class="title">Attributes</div>
-            <div class="description">Master HTML attributes and their properties</div>
-        </a>
+        <!-- Navigation Grid -->
+        <div class="nav-grid" id="navGrid">
+            <a href="html/API.html" class="nav-item" data-keywords="api web development interface">
+                <span class="icon">🔗</span>
+                <div class="item-title">API</div>
+                <div class="description">Learn about HTML5 APIs and web development interfaces</div>
+            </a>
 
-        <a href="html/Audio.html" class="nav-item" data-keywords="audio multimedia sound">
-            <span class="icon">🎵</span>
-            <div class="title">Audio</div>
-            <div class="description">Work with audio elements and multimedia</div>
-        </a>
+            <a href="html/attributes.html" class="nav-item" data-keywords="attributes html properties">
+                <span class="icon">🏷️</span>
+                <div class="item-title">Attributes</div>
+                <div class="description">Master HTML attributes and their properties</div>
+            </a>
 
-        <a href="html/basic.html" class="nav-item" data-keywords="basic fundamentals beginner">
-            <span class="icon">📚</span>
-            <div class="title">Basic HTML</div>
-            <div class="description">Start with HTML fundamentals and basics</div>
-        </a>
+            <a href="html/Audio.html" class="nav-item" data-keywords="audio multimedia sound">
+                <span class="icon">🎵</span>
+                <div class="item-title">Audio</div>
+                <div class="description">Work with audio elements and multimedia</div>
+            </a>
 
-        <a href="html/Block and Inline Elements.html" class="nav-item" data-keywords="block inline elements layout">
-            <span class="icon">📦</span>
-            <div class="title">Block & Inline</div>
-            <div class="description">Understand block and inline elements</div>
-        </a>
+            <a href="html/basic.html" class="nav-item" data-keywords="basic fundamentals beginner">
+                <span class="icon">📚</span>
+                <div class="item-title">Basic HTML</div>
+                <div class="description">Start with HTML fundamentals and basics</div>
+            </a>
 
-        <a href="html/canva.html" class="nav-item" data-keywords="canvas graphics drawing">
-            <span class="icon">🎨</span>
-            <div class="title">Canvas</div>
-            <div class="description">Create graphics and animations with canvas</div>
-        </a>
+            <a href="html/Block and Inline Elements.html" class="nav-item" data-keywords="block inline elements layout">
+                <span class="icon">📦</span>
+                <div class="item-title">Block & Inline</div>
+                <div class="description">Understand block and inline elements</div>
+            </a>
 
-        <a href="html/Character .html" class="nav-item" data-keywords="character entities symbols">
-            <span class="icon">🔤</span>
-            <div class="title">Characters</div>
-            <div class="description">Learn about character entities and symbols</div>
-        </a>
+            <a href="html/canva.html" class="nav-item" data-keywords="canvas graphics drawing">
+                <span class="icon">🎨</span>
+                <div class="item-title">Canvas</div>
+                <div class="description">Create graphics and animations with canvas</div>
+            </a>
 
-        <a href="html/class Attribute.html" class="nav-item" data-keywords="class attribute css styling">
-            <span class="icon">🎯</span>
-            <div class="title">Class Attribute</div>
-            <div class="description">Master CSS classes and styling</div>
-        </a>
+            <a href="html/Character .html" class="nav-item" data-keywords="character entities symbols">
+                <span class="icon">🔤</span>
+                <div class="item-title">Characters</div>
+                <div class="description">Learn about character entities and symbols</div>
+            </a>
 
-        <a href="html/Colors.html" class="nav-item" data-keywords="colors styling design">
-            <span class="icon">🌈</span>
-            <div class="title">Colors</div>
-            <div class="description">Work with colors and color schemes</div>
-        </a>
+            <a href="html/class Attribute.html" class="nav-item" data-keywords="class attribute css styling">
+                <span class="icon">🎯</span>
+                <div class="item-title">Class Attribute</div>
+                <div class="description">Master CSS classes and styling</div>
+            </a>
 
-        <a href="html/Comments.html" class="nav-item" data-keywords="comments documentation code">
-            <span class="icon">💬</span>
-            <div class="title">Comments</div>
-            <div class="description">Document your code with comments</div>
-        </a>
+            <a href="html/Colors.html" class="nav-item" data-keywords="colors styling design">
+                <span class="icon">🌈</span>
+                <div class="item-title">Colors</div>
+                <div class="description">Work with colors and color schemes</div>
+            </a>
 
-        <a href="html/Computer Code.html" class="nav-item" data-keywords="code programming syntax">
-            <span class="icon">💻</span>
-            <div class="title">Computer Code</div>
-            <div class="description">Display code and programming syntax</div>
-        </a>
+            <a href="html/Comments.html" class="nav-item" data-keywords="comments documentation code">
+                <span class="icon">💬</span>
+                <div class="item-title">Comments</div>
+                <div class="description">Document your code with comments</div>
+            </a>
 
-        <a href="html/css.html" class="nav-item" data-keywords="css styling design layout">
-            <span class="icon">🎨</span>
-            <div class="title">CSS</div>
-            <div class="description">Style your HTML with CSS</div>
-        </a>
+            <a href="html/Computer Code.html" class="nav-item" data-keywords="code programming syntax">
+                <span class="icon">💻</span>
+                <div class="item-title">Computer Code</div>
+                <div class="description">Display code and programming syntax</div>
+            </a>
 
-        <a href="html/Forms.html" class="nav-item" data-keywords="forms input user interaction">
-            <span class="icon">📝</span>
-            <div class="title">Forms</div>
-            <div class="description">Create interactive forms and user input</div>
-        </a>
+            <a href="html/css.html" class="nav-item" data-keywords="css styling design layout">
+                <span class="icon">🎨</span>
+                <div class="item-title">CSS</div>
+                <div class="description">Style your HTML with CSS</div>
+            </a>
 
-        <a href="html/Images.html" class="nav-item" data-keywords="images graphics media">
-            <span class="icon">🖼️</span>
-            <div class="title">Images</div>
-            <div class="description">Work with images and graphics</div>
-        </a>
+            <a href="html/Forms.html" class="nav-item" data-keywords="forms input user interaction">
+                <span class="icon">📝</span>
+                <div class="item-title">Forms</div>
+                <div class="description">Create interactive forms and user input</div>
+            </a>
 
-        <a href="html/JavaScript.html" class="nav-item" data-keywords="javascript programming interactive">
-            <span class="icon">⚡</span>
-            <div class="title">JavaScript</div>
-            <div class="description">Add interactivity with JavaScript</div>
-        </a>
+            <a href="html/Images.html" class="nav-item" data-keywords="images graphics media">
+                <span class="icon">🖼️</span>
+                <div class="item-title">Images</div>
+                <div class="description">Work with images and graphics</div>
+            </a>
 
-        <a href="html/Tables.html" class="nav-item" data-keywords="tables data structure">
-            <span class="icon">📊</span>
-            <div class="title">Tables</div>
-            <div class="description">Create and style data tables</div>
-        </a>
+            <a href="html/JavaScript.html" class="nav-item" data-keywords="javascript programming interactive">
+                <span class="icon">⚡</span>
+                <div class="item-title">JavaScript</div>
+                <div class="description">Add interactivity with JavaScript</div>
+            </a>
+
+            <a href="html/Tables.html" class="nav-item" data-keywords="tables data structure">
+                <span class="icon">📊</span>
+                <div class="item-title">Tables</div>
+                <div class="description">Create and style data tables</div>
+            </a>
+
+            <a href="html/vidio.html" class="nav-item" data-keywords="video multimedia">
+                <span class="icon">🎥</span>
+                <div class="item-title">Video</div>
+                <div class="description">Work with video elements and multimedia</div>
+            </a>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 HTML Learning Hub. Built with passion for web development.</p>
     </div>
-
-    <a href="html/vidio.html" class="nav-item" data-keywords="video multimedia">
-        <span class="icon">🎥</span>
-        <div class="title">Video</div>
-        <div class="description">Halaman video pembelajaran</div>
-    </a>
-
-
-
 
     <script>
         // Create floating particles
@@ -485,7 +581,7 @@
                 const query = this.value.toLowerCase();
 
                 navItems.forEach(item => {
-                    const title = item.querySelector('.title').textContent.toLowerCase();
+                    const title = item.querySelector('.item-title').textContent.toLowerCase();
                     const description = item.querySelector('.description').textContent.toLowerCase();
                     const keywords = item.dataset.keywords.toLowerCase();
 
@@ -503,7 +599,7 @@
         function animateStats() {
             const totalTopics = document.getElementById('totalTopics');
             let count = 0;
-            const target = 50;
+            const target = 17;
 
             const timer = setInterval(() => {
                 count++;
@@ -512,7 +608,7 @@
                 if (count >= target) {
                     clearInterval(timer);
                 }
-            }, 50);
+            }, 100);
         }
 
         // Initialize everything
@@ -522,10 +618,13 @@
             setTimeout(animateStats, 1000);
         });
 
-        // Add hover sound effect (optional)
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('mouseenter', function () {
-                // You can add a subtle sound effect here if desired
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
