@@ -1,103 +1,103 @@
-Example
-// Create an Object
-const person = {
-    name: "John",
-    age: 30,
-    city: "New York"
-};
+// Example
+// // Create an Object
+// const person = {
+//     name: "John",
+//     age: 30,
+//     city: "New York"
+// };
 
-document.getElementById("demo").innerHTML = person;
-Some solutions to display JavaScript objects are:
+// document.getElementById("demo").innerHTML = person;
+// Some solutions to display JavaScript objects are:
 
-Displaying the Object Properties by name
-Displaying the Object Properties in a Loop
-Displaying the Object using Object.values()
-Displaying the Object using JSON.stringify()
-Displaying Object Properties
-The properties of an object can be displayed as a string:
+// Displaying the Object Properties by name
+// Displaying the Object Properties in a Loop
+// Displaying the Object using Object.values()
+// Displaying the Object using JSON.stringify()
+// Displaying Object Properties
+// The properties of an object can be displayed as a string:
 
-Example
-// Create an Object
-const person = {
-    name: "John",
-    age: 30,
-    city: "New York"
-};
+// Example
+// // Create an Object
+// const person = {
+//     name: "John",
+//     age: 30,
+//     city: "New York"
+// };
 
-// Display Properties
-document.getElementById("demo").innerHTML =
-    person.name + "," + person.age + "," + person.city;
-Displaying Properties in a Loop
-The properties of an object can be collected in a loop:
+// // Display Properties
+// document.getElementById("demo").innerHTML =
+//     person.name + "," + person.age + "," + person.city;
+// Displaying Properties in a Loop
+// The properties of an object can be collected in a loop:
 
-Example
-// Create an Object
-const person = {
-    name: "John",
-    age: 30,
-    city: "New York"
-};
+// Example
+// // Create an Object
+// const person = {
+//     name: "John",
+//     age: 30,
+//     city: "New York"
+// };
 
-// Build a Text
-let text = "";
-for (let x in person) {
-    text += person[x] + " ";
-};
+// // Build a Text
+// let text = "";
+// for (let x in person) {
+//     text += person[x] + " ";
+// };
 
-// Display the Text
-document.getElementById("demo").innerHTML = text;
-Note:
-You must use person[x] in the loop.
+// // Display the Text
+// document.getElementById("demo").innerHTML = text;
+// Note:
+// You must use person[x] in the loop.
 
-    person.x will not work(Because x is the loop variable).
+//     person.x will not work(Because x is the loop variable).
 
-        ADVERTISEMENT
+//         ADVERTISEMENT
 
-Using Object.values()
-Object.values() creates an array from the property values:
+// Using Object.values()
+// Object.values() creates an array from the property values:
 
-// Create an Object
-const person = {
-    name: "John",
-    age: 30,
-    city: "New York"
-};
+// // Create an Object
+// const person = {
+//     name: "John",
+//     age: 30,
+//     city: "New York"
+// };
 
-// Create an Array
-const myArray = Object.values(person);
+// // Create an Array
+// const myArray = Object.values(person);
 
-// Display the Array
-document.getElementById("demo").innerHTML = myArray;
-Using Object.entries()
-Object.entries() makes it simple to use objects in loops:
+// // Display the Array
+// document.getElementById("demo").innerHTML = myArray;
+// Using Object.entries()
+// Object.entries() makes it simple to use objects in loops:
 
-Example
-const fruits = { Bananas: 300, Oranges: 200, Apples: 500 };
+// Example
+// const fruits = { Bananas: 300, Oranges: 200, Apples: 500 };
 
-let text = "";
-for (let [fruit, value] of Object.entries(fruits)) {
-    text += fruit + ": " + value + "<br>";
-}
-Using JSON.stringify()
-JavaScript objects can be converted to a string with JSON method JSON.stringify().
+// let text = "";
+// for (let [fruit, value] of Object.entries(fruits)) {
+//     text += fruit + ": " + value + "<br>";
+// }
+// Using JSON.stringify()
+// JavaScript objects can be converted to a string with JSON method JSON.stringify().
 
-    JSON.stringify() is included in JavaScript and supported in all major browsers.
+//     JSON.stringify() is included in JavaScript and supported in all major browsers.
 
-        Note:
-The result will be a string written in JSON notation:
+//         Note:
+// The result will be a string written in JSON notation:
 
-{ "name": "John", "age": 50, "city": "New York" }
+// { "name": "John", "age": 50, "city": "New York" }
 
-Example
-// Create an Object
-const person = {
-    name: "John",
-    age: 30,
-    city: "New York"
-};
+// Example
+// // Create an Object
+// const person = {
+//     name: "John",
+//     age: 30,
+//     city: "New York"
+// };
 
-// Stringify Object
-let myString = JSON.stringify(person);
+// // Stringify Object
+// let myString = JSON.stringify(person);
 
-// Display String
-document.getElementById("demo").innerHTML = myString;
+// // Display String
+// document.getElementById("demo").innerHTML = myString;

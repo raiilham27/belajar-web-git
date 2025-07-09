@@ -1,19 +1,19 @@
-< !DOCTYPE html >
-    <html>
-        <body>
+// < !DOCTYPE html >
+//     <html>
+//         <body>
 
-            <h1>My First Web Page</h1>
+//             <h1>My First Web Page</h1>
 
-            <script>
-                a = 5;
-                b = 6;
-                c = a + b;
-                console.log(c);
-            </script>
+//             <script>
+//                 a = 5;
+//                 b = 6;
+//                 c = a + b;
+//                 console.log(c);
+//             </script>
 
-        </body>
-    </html>
+//         </body>
+//     </html>
 
-let x = 15 * 5;
-debugger;
-document.getElementById("demo").innerHTML = x;
+// let x = 15 * 5;
+// debugger;
+// document.getElementById("demo").innerHTML = x;

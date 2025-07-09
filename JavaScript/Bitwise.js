@@ -1,15 +1,15 @@
-< !DOCTYPE html >
-    <html>
-        <body>
+// < !DOCTYPE html >
+//     <html>
+//         <body>
 
-            <h1>JavaScript Bitwise AND</h1>
-            <h2>The & Operator</h2>
+//             <h1>JavaScript Bitwise AND</h1>
+//             <h2>The & Operator</h2>
 
-            <p id="demo"></p>
+//             <p id="demo"></p>
 
-            <script>
-                document.getElementById("demo").innerHTML = 5 & 1;
-            </script>
+//             <script>
+//                 document.getElementById("demo").innerHTML = 5 & 1;
+//             </script>
 
-        </body>
-    </html> 
+//         </body>
+//     </html> 

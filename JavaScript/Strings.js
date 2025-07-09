@@ -1,146 +1,146 @@
-Using Quotes
-A JavaScript string is zero or more characters written inside quotes.
+// Using Quotes
+// A JavaScript string is zero or more characters written inside quotes.
 
-    Example
-let text = "John Doe";
-You can use single or double quotes:
+//     Example
+// let text = "John Doe";
+// You can use single or double quotes:
 
-Example
-let carName1 = "Volvo XC60";  // Double quotes
-let carName2 = 'Volvo XC60';  // Single quotes
-Note
-Strings created with single or double quotes work the same.
+// Example
+// let carName1 = "Volvo XC60";  // Double quotes
+// let carName2 = 'Volvo XC60';  // Single quotes
+// Note
+// Strings created with single or double quotes work the same.
 
-There is no difference between the two.
+// There is no difference between the two.
 
-Quotes Inside Quotes
-You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
+// Quotes Inside Quotes
+// You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
 
-Example
-let answer1 = "It's alright";
-let answer2 = "He is called 'Johnny'";
-let answer3 = 'He is called "Johnny"';
-Template Strings
-Templates were introduced with ES6(JavaScript 2016).
+// Example
+// let answer1 = "It's alright";
+// let answer2 = "He is called 'Johnny'";
+// let answer3 = 'He is called "Johnny"';
+// Template Strings
+// Templates were introduced with ES6(JavaScript 2016).
 
-Templates are strings enclosed in backticks(`This is a template string`).
+// Templates are strings enclosed in backticks(`This is a template string`).
 
-Templates allow single and double quotes inside a string:
+// Templates allow single and double quotes inside a string:
 
-Example
-let text = `He's often called "Johnny"`;
+// Example
+// let text = `He's often called "Johnny"`;
 
-Note
-Templates are not supported in Internet Explorer.
+// Note
+// Templates are not supported in Internet Explorer.
 
-String Length
-To find the length of a string, use the built -in length property:
+// String Length
+// To find the length of a string, use the built -in length property:
 
-Example
-let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let length = text.length;
-Escape Characters
-Because strings must be written within quotes, JavaScript will misunderstand this string:
+// Example
+// let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// let length = text.length;
+// Escape Characters
+// Because strings must be written within quotes, JavaScript will misunderstand this string:
 
-let text = "We are the so-called "Vikings" from the north.";
-The string will be chopped to "We are the so-called ".
+// let text = "We are the so-called "Vikings" from the north.";
+// The string will be chopped to "We are the so-called ".
 
-To solve this problem, you can use an backslash escape character.
+// To solve this problem, you can use an backslash escape character.
 
-The backslash escape character(\) turns special characters into string characters:
+// The backslash escape character(\) turns special characters into string characters:
 
-Code	Result	Description
-\'	'	Single quote
-\"	"	Double quote
-\\	\	Backslash
-Examples
-\" inserts a double quote in a string:
-
-
-let text = "We are the so-called \"Vikings\" from the north.";
-\' inserts a single quote in a string:
+// Code	Result	Description
+// \'	'	Single quote
+// \"	"	Double quote
+// \\	\	Backslash
+// Examples
+// \" inserts a double quote in a string:
 
 
-let text = 'It\'s alright.';
-\\ inserts a backslash in a string:
+// let text = "We are the so-called \"Vikings\" from the north.";
+// \' inserts a single quote in a string:
 
 
-let text = "The character \\ is called backslash.";
-Six other escape sequences are valid in JavaScript:
+// let text = 'It\'s alright.';
+// \\ inserts a backslash in a string:
 
-Code	Result
-\b	Backspace
-\f	Form Feed
-\n	New Line
-\r	Carriage Return
-\t	Horizontal Tabulator
-\v	Vertical Tabulator
-Note
-The 6 escape characters above were originally designed to control typewriters, teletypes, and fax machines.They do not make any sense in HTML.
 
-    ADVERTISEMENT
+// let text = "The character \\ is called backslash.";
+// Six other escape sequences are valid in JavaScript:
 
-Breaking Long Lines
-For readability, programmers often like to avoid long code lines.
+// Code	Result
+// \b	Backspace
+// \f	Form Feed
+// \n	New Line
+// \r	Carriage Return
+// \t	Horizontal Tabulator
+// \v	Vertical Tabulator
+// Note
+// The 6 escape characters above were originally designed to control typewriters, teletypes, and fax machines.They do not make any sense in HTML.
 
-A safe way to break up a statement is after an operator:
+//     ADVERTISEMENT
 
-Example
-document.getElementById("demo").innerHTML =
-    "Hello Dolly!";
-A safe way to break up a string is by using string addition:
+// Breaking Long Lines
+// For readability, programmers often like to avoid long code lines.
 
-    Example
-document.getElementById("demo").innerHTML = "Hello " +
-    "Dolly!";
-Template Strings
-Templates were introduced with ES6(JavaScript 2016).
+// A safe way to break up a statement is after an operator:
 
-Templates are strings enclosed in backticks(`This is a template string`).
+// Example
+// document.getElementById("demo").innerHTML =
+//     "Hello Dolly!";
+// A safe way to break up a string is by using string addition:
 
-Templates allow multiline strings:
+//     Example
+// document.getElementById("demo").innerHTML = "Hello " +
+//     "Dolly!";
+// Template Strings
+// Templates were introduced with ES6(JavaScript 2016).
 
-Example
-let text =
-    `The quick
-brown fox
-jumps over
-the lazy dog`;
+// Templates are strings enclosed in backticks(`This is a template string`).
 
-Note
-Templates are not supported in Internet Explorer.
+// Templates allow multiline strings:
 
-JavaScript Strings as Objects
-Normally, JavaScript strings are primitive values, created from literals:
+// Example
+// let text =
+//     `The quick
+// brown fox
+// jumps over
+// the lazy dog`;
 
-let x = "John";
-But strings can also be defined as objects with the keyword new:
+// Note
+// Templates are not supported in Internet Explorer.
 
-let y = new String("John");
-Example
-let x = "John";
-let y = new String("John");
-Do not create String objects.
+// JavaScript Strings as Objects
+// Normally, JavaScript strings are primitive values, created from literals:
 
-The new keyword complicates the code and slows down execution speed.
+// let x = "John";
+// But strings can also be defined as objects with the keyword new:
 
-String objects can produce unexpected results:
+// let y = new String("John");
+// Example
+// let x = "John";
+// let y = new String("John");
+// Do not create String objects.
 
-When using the == operator, x and y are equal:
+// The new keyword complicates the code and slows down execution speed.
 
-let x = "John";
-let y = new String("John");
-When using the === operator, x and y are not equal:
+// String objects can produce unexpected results:
 
-let x = "John";
-let y = new String("John");
-Note the difference between(x == y) and(x === y).
+// When using the == operator, x and y are equal:
 
-(x == y) true or false ?
+// let x = "John";
+// let y = new String("John");
+// When using the === operator, x and y are not equal:
 
-    let x = new String("John");
-let y = new String("John");
-(x === y) true or false ?
+// let x = "John";
+// let y = new String("John");
+// Note the difference between(x == y) and(x === y).
 
-    let x = new String("John");
-let y = new String("John");
+// (x == y) true or false ?
+
+//     let x = new String("John");
+// let y = new String("John");
+// (x === y) true or false ?
+
+//     let x = new String("John");
+// let y = new String("John");
