@@ -19,6 +19,164 @@
             overflow-x: hidden;
         }
 
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: -320px;
+            top: 0;
+            width: 320px;
+            height: 100vh;
+            background: rgba(12, 12, 12, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(64, 123, 255, 0.3);
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow-y: auto;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(64, 123, 255, 0.2);
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        .sidebar-title {
+            color: #64d8ff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(100, 216, 255, 0.5);
+        }
+
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 15px 20px 10px;
+            border-bottom: 1px solid rgba(64, 123, 255, 0.1);
+            background: rgba(64, 123, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 1.2rem;
+        }
+
+        .sidebar-nav {
+            padding: 0;
+        }
+
+        .sidebar-item {
+            display: block;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(64, 123, 255, 0.2), rgba(64, 123, 255, 0.1));
+            transition: width 0.3s ease;
+        }
+
+        .sidebar-item:hover {
+            color: #64d8ff;
+            background: rgba(64, 123, 255, 0.1);
+            border-left-color: #64d8ff;
+            padding-left: 25px;
+        }
+
+        .sidebar-item:hover::before {
+            width: 100%;
+        }
+
+        .sidebar-item .item-icon {
+            display: inline-block;
+            width: 20px;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        /* Sidebar Toggle Button */
+        .sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(64, 123, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(64, 123, 255, 0.3);
+            border-radius: 50%;
+            color: #64d8ff;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-toggle:hover {
+            background: rgba(64, 123, 255, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .sidebar-toggle.active {
+            left: 280px;
+        }
+
+        /* Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Main content adjustment */
+        .main-content {
+            transition: margin-left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .main-content.shifted {
+            margin-left: 320px;
+        }
+
         /* Animated background particles */
         .particles {
             position: fixed;
@@ -372,6 +530,19 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .sidebar {
+                width: 280px;
+                left: -280px;
+            }
+
+            .sidebar-toggle.active {
+                left: 240px;
+            }
+
+            .main-content.shifted {
+                margin-left: 280px;
+            }
+
             .title {
                 font-size: 2.5rem;
             }
@@ -395,6 +566,19 @@
         }
 
         @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+
+            .sidebar-toggle.active {
+                left: 20px;
+            }
+
+            .main-content.shifted {
+                margin-left: 0;
+            }
+
             .title {
                 font-size: 2rem;
             }
@@ -411,228 +595,306 @@
 </head>
 
 <body>
-    <!-- Animated particles background -->
-    <div class="particles" id="particles"></div>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        ☰
+    </button>
 
-    <!-- Header -->
-    <div class="header">
-        <h1 class="title">HTML Learning Hub</h1>
-        <p class="subtitle">Master HTML with Interactive Lessons</p>
-    </div>
-    <a href="index2.html"
-        class="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-lg font-semibold rounded-2xl shadow-lg transition duration-300 ease-in-out">
-        Next →
-    </a>
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">Navigation</h2>
+        </div>
 
+        <div class="sidebar-section">
+            <div class="section-title">
+                <span class="section-icon">📄</span>
+                HTML Elements
+            </div>
+            <nav class="sidebar-nav">
+                <a href="html/basic.html" class="sidebar-item">
+                    <span class="item-icon">📚</span>
+                    Basic HTML
+                </a>
+                <a href="html/attributes.html" class="sidebar-item">
+                    <span class="item-icon">🏷️</span>
+                    Attributes
+                </a>
+                <a href="html/Block and Inline Elements.html" class="sidebar-item">
+                    <span class="item-icon">📦</span>
+                    Block & Inline
+                </a>
+                <a href="html/Forms.html" class="sidebar-item">
+                    <span class="item-icon">📝</span>
+                    Forms
+                </a>
+                <a href="html/Tables.html" class="sidebar-item">
+                    <span class="item-icon">📊</span>
+                    Tables
+                </a>
+                <a href="html/Images.html" class="sidebar-item">
+                    <span class="item-icon">🖼️</span>
+                    Images
+                </a>
+                <a href="html/Comments.html" class="sidebar-item">
+                    <span class="item-icon">💬</span>
+                    Comments
+                </a>
+                <a href="html/Character .html" class="sidebar-item">
+                    <span class="item-icon">🔤</span>
+                    Characters
+                </a>
+                <a href="html/Computer Code.html" class="sidebar-item">
+                    <span class="item-icon">💻</span>
+                    Computer Code
+                </a>
+            </nav>
+        </div>
 
-    <!-- Navigation Grid -->
-    <div class="nav-grid" id="navGrid">
-        <a href="html/API.html/" class="nav-item" data-keywords="api web development interface">
-            <span class="icon">🔗</span>
-            <div class="item-title">API</div>
-            <div class="description">Learn about HTML5 APIs and web development interfaces</div>
-        </a>
+        <div class="sidebar-section">
+            <div class="section-title">
+                <span class="section-icon">🎨</span>
+                CSS Styling
+            </div>
+            <nav class="sidebar-nav">
+                <a href="html/css.html" class="sidebar-item">
+                    <span class="item-icon">🎨</span>
+                    CSS Basics
+                </a>
+                <a href="html/class Attribute.html" class="sidebar-item">
+                    <span class="item-icon">🎯</span>
+                    Class Attribute
+                </a>
+                <a href="html/Colors.html" class="sidebar-item">
+                    <span class="item-icon">🌈</span>
+                    Colors
+                </a>
+            </nav>
+        </div>
 
-        <a href="html/attributes.html" class="nav-item" data-keywords="attributes html properties">
-            <span class="icon">🏷️</span>
-            <div class="item-title">Attributes</div>
-            <div class="description">Master HTML attributes and their properties</div>
-        </a>
+        <div class="sidebar-section">
+            <div class="section-title">
+                <span class="section-icon">⚡</span>
+                JavaScript
+            </div>
+            <nav class="sidebar-nav">
+                <a href="html/JavaScript.html" class="sidebar-item">
+                    <span class="item-icon">⚡</span>
+                    JavaScript
+                </a>
+                <a href="html/API.html" class="sidebar-item">
+                    <span class="item-icon">🔗</span>
+                    API
+                </a>
+            </nav>
+        </div>
 
-        <a href="html/Audio.html" class="nav-item" data-keywords="audio multimedia sound">
-            <span class="icon">🎵</span>
-            <div class="item-title">Audio</div>
-            <div class="description">Work with audio elements and multimedia</div>
-        </a>
-
-        <a href="html/basic.html" class="nav-item" data-keywords="basic fundamentals beginner">
-            <span class="icon">📚</span>
-            <div class="item-title">Basic HTML</div>
-            <div class="description">Start with HTML fundamentals and basics</div>
-        </a>
-
-        <a href="html/Block and Inline Elements.html" class="nav-item" data-keywords="block inline elements layout">
-            <span class="icon">📦</span>
-            <div class="item-title">Block & Inline</div>
-            <div class="description">Understand block and inline elements</div>
-        </a>
-
-        <a href="html/canva.html" class="nav-item" data-keywords="canvas graphics drawing">
-            <span class="icon">🎨</span>
-            <div class="item-title">Canvas</div>
-            <div class="description">Create graphics and animations with canvas</div>
-        </a>
-
-        <a href="html/Character .html" class="nav-item" data-keywords="character entities symbols">
-            <span class="icon">🔤</span>
-            <div class="item-title">Characters</div>
-            <div class="description">Learn about character entities and symbols</div>
-        </a>
-
-        <a href="html/class Attribute.html" class="nav-item" data-keywords="class attribute css styling">
-            <span class="icon">🎯</span>
-            <div class="item-title">Class Attribute</div>
-            <div class="description">Master CSS classes and styling</div>
-        </a>
-
-        <a href="html/Colors.html" class="nav-item" data-keywords="colors styling design">
-            <span class="icon">🌈</span>
-            <div class="item-title">Colors</div>
-            <div class="description">Work with colors and color schemes</div>
-        </a>
-
-        <a href="html/Comments.html" class="nav-item" data-keywords="comments documentation code">
-            <span class="icon">💬</span>
-            <div class="item-title">Comments</div>
-            <div class="description">Document your code with comments</div>
-        </a>
-
-        <a href="html/Computer Code.html" class="nav-item" data-keywords="code programming syntax">
-            <span class="icon">💻</span>
-            <div class="item-title">Computer Code</div>
-            <div class="description">Display code and programming syntax</div>
-        </a>
-
-        <a href="html/css.html" class="nav-item" data-keywords="css styling design layout">
-            <span class="icon">🎨</span>
-            <div class="item-title">CSS</div>
-            <div class="description">Style your HTML with CSS</div>
-        </a>
-
-        <a href="html/Forms.html" class="nav-item" data-keywords="forms input user interaction">
-            <span class="icon">📝</span>
-            <div class="item-title">Forms</div>
-            <div class="description">Create interactive forms and user input</div>
-        </a>
-
-        <a href="html/Images.html" class="nav-item" data-keywords="images graphics media">
-            <span class="icon">🖼️</span>
-            <div class="item-title">Images</div>
-            <div class="description">Work with images and graphics</div>
-        </a>
-
-        <a href="html/JavaScript.html" class="nav-item" data-keywords="javascript programming interactive">
-            <span class="icon">⚡</span>
-            <div class="item-title">JavaScript</div>
-            <div class="description">Add interactivity with JavaScript</div>
-        </a>
-
-        <a href="html/Tables.html" class="nav-item" data-keywords="tables data structure">
-            <span class="icon">📊</span>
-            <div class="item-title">Tables</div>
-            <div class="description">Create and style data tables</div>
-        </a>
-
-        <a href="html/vidio.html" class="nav-item" data-keywords="video multimedia">
-            <span class="icon">🎥</span>
-            <div class="item-title">Video</div>
-            <div class="description">Work with video elements and multimedia</div>
-        </a>
-    </div>
+        <div class="sidebar-section">
+            <div class="section-title">
+                <span class="section-icon">🎵</span>
+                Multimedia
+            </div>
+            <nav class="sidebar-nav">
+                <a href="html/Audio.html" class="sidebar-item">
+                    <span class="item-icon">🎵</span>
+                    Audio
+                </a>
+                <a href="html/vidio.html" class="sidebar-item">
+                    <span class="item-icon">🎥</span>
+                    Video
+                </a>
+                <a href="html/canva.html" class="sidebar-item">
+                    <span class="item-icon">🎨</span>
+                    Canvas
+                </a>
+            </nav>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <div class=" footer">
-        <p>&copy; 2024 HTML Learning Hub. Built with passion for web development.</p>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Animated particles background -->
+        <div class="particles" id="particles"></div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">HTML Learning Hub</h1>
+            <p class="subtitle">Master HTML with Interactive Lessons</p>
+        </div>
+        <a href="index2.html"
+            class="inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-lg font-semibold rounded-2xl shadow-lg transition duration-300 ease-in-out">
+            Next →
+        </a>
+
+        <div class="main-container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search topics...">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTopics">17</span>
+                    <span class="stat-label">Topics</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Learning</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Interactive</span>
+                </div>
+            </div>
+
+            <!-- Navigation Grid -->
+            <div class="nav-grid" id="navGrid">
+                <a href="html/API.html/" class="nav-item" data-keywords="api web development interface">
+                    <span class="icon">🔗</span>
+                    <div class="item-title">API</div>
+                    <div class="description">Learn about HTML5 APIs and web development interfaces</div>
+                </a>
+
+                <a href="html/attributes.html" class="nav-item" data-keywords="attributes html properties">
+                    <span class="icon">🏷️</span>
+                    <div class="item-title">Attributes</div>
+                    <div class="description">Master HTML attributes and their properties</div>
+                </a>
+
+                <a href="html/Audio.html" class="nav-item" data-keywords="audio multimedia sound">
+                    <span class="icon">🎵</span>
+                    <div class="item-title">Audio</div>
+                    <div class="description">Work with audio elements and multimedia</div>
+                </a>
+
+                <a href="html/basic.html" class="nav-item" data-keywords="basic fundamentals beginner">
+                    <span class="icon">📚</span>
+                    <div class="item-title">Basic HTML</div>
+                    <div class="description">Start with HTML fundamentals and basics</div>
+                </a>
+
+                <a href="html/Block and Inline Elements.html" class="nav-item"
+                    data-keywords="block inline elements layout">
+                    <span class="icon">📦</span>
+                    <div class="item-title">Block & Inline</div>
+                    <div class="description">Understand block and inline elements</div>
+                </a>
+
+                <a href="html/canva.html" class="nav-item" data-keywords="canvas graphics drawing">
+                    <span class="icon">🎨</span>
+                    <div class="item-title">Canvas</div>
+                    <div class="description">Create graphics and animations with canvas</div>
+                </a>
+
+                <a href="html/Character .html" class="nav-item" data-keywords="character entities symbols">
+                    <span class="icon">🔤</span>
+                    <div class="item-title">Characters</div>
+                    <div class="description">Learn about character entities and symbols</div>
+                </a>
+
+                <a href="html/class Attribute.html" class="nav-item" data-keywords="class attribute css styling">
+                    <span class="icon">🎯</span>
+                    <div class="item-title">Class Attribute</div>
+                    <div class="description">Master CSS classes and styling</div>
+                </a>
+
+                <a href="html/Colors.html" class="nav-item" data-keywords="colors styling design">
+                    <span class="icon">🌈</span>
+                    <div class="item-title">Colors</div>
+                    <div class="description">Work with colors and color schemes</div>
+                </a>
+
+                <a href="html/Comments.html" class="nav-item" data-keywords="comments documentation code">
+                    <span class="icon">💬</span>
+                    <div class="item-title">Comments</div>
+                    <div class="description">Document your code with comments</div>
+                </a>
+
+                <a href="html/Computer Code.html" class="nav-item" data-keywords="code programming syntax">
+                    <span class="icon">💻</span>
+                    <div class="item-title">Computer Code</div>
+                    <div class="description">Display code and programming syntax</div>
+                </a>
+
+                <a href="html/css.html" class="nav-item" data-keywords="css styling design layout">
+                    <span class="icon">🎨</span>
+                    <div class="item-title">CSS</div>
+                    <div class="description">Style your HTML with CSS</div>
+                </a>
+
+                <a href="html/Forms.html" class="nav-item" data-keywords="forms input user interaction">
+                    <span class="icon">📝</span>
+                    <div class="item-title">Forms</div>
+                    <div class="description">Create interactive forms and user input</div>
+                </a>
+
+                <a href="html/Images.html" class="nav-item" data-keywords="images graphics media">
+                    <span class="icon">🖼️</span>
+                    <div class="item-title">Images</div>
+                    <div class="description">Work with images and graphics</div>
+                </a>
+
+                <a href="html/JavaScript.html" class="nav-item" data-keywords="javascript programming interactive">
+                    <span class="icon">⚡</span>
+                    <div class="item-title">JavaScript</div>
+                    <div class="description">Add interactivity with JavaScript</div>
+                </a>
+
+                <a href="html/Tables.html" class="nav-item" data-keywords="tables data structure">
+                    <span class="icon">📊</span>
+                    <div class="item-title">Tables</div>
+                    <div class="description">Create and style data tables</div>
+                </a>
+
+                <a href="html/vidio.html" class="nav-item" data-keywords="video multimedia">
+                    <span class="icon">🎥</span>
+                    <div class="item-title">Video</div>
+                    <div class="description">Work with video elements and multimedia</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 HTML Learning Hub. Built with passion for web development.</p>
+        </div>
     </div>
 
     <script>
-        // Create floating particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
+        // Sidebar functionality
+        function setupSidebar() {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const mainContent = document.getElementById('mainContent');
 
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = Math.random() * 6 + 2 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
+            function toggleSidebar() {
+                const isActive = sidebar.classList.contains('active');
 
-        // Search functionality
-        function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const navItems = document.querySelectorAll('.nav-item');
-
-            searchInput.addEventListener('input', function () {
-                const query = this.value.toLowerCase();
-
-                navItems.forEach(item => {
-                    const title = item.querySelector('.item-title').textContent.toLowerCase();
-                    const description = item.querySelector('.description').textContent.toLowerCase();
-                    const keywords = item.dataset.keywords.toLowerCase();
-
-                    if (title.includes(query) || description.includes(query) || keywords.includes(query)) {
-                        item.style.display = 'block';
-                        item.style.animation = 'cardSlide 0.5s ease-out';
-                    } else {
-                        item.style.display = query === '' ? 'block' : 'none';
+                if (isActive) {
+                    sidebar.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+                    sidebarToggle.classList.remove('active');
+                    mainContent.classList.remove('shifted');
+                } else {
+                    sidebar.classList.add('active');
+                    sidebarOverlay.classList.add('active');
+                    sidebarToggle.classList.add('active');
+                    if (window.innerWidth > 768) {
+                        mainContent.classList.add('shifted');
                     }
-                });
-            });
-        }
-
-        // Count animation for stats
-        function animateStats() {
-            const totalTopics = document.getElementById('totalTopics');
-            let count = 0;
-            const target = 17;
-
-            const timer = setInterval(() => {
-                count++;
-                totalTopics.textContent = count + '+';
-
-                if (count >= target) {
-                    clearInterval(timer);
                 }
-            }, 100);
-        }
+            }
 
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function () {
-            createParticles();
-            setupSearch();
-            setTimeout(animateStats, 1000);
-        });
+            sidebarToggle.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
 
-        // Add smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-
-
-    </script>
-</body>
-
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daftar Halaman CSS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-
-<body class="bg-gray-100 text-gray-800 p-8">
-
-
-</body>
-
-</html>
+            // Close sidebar when clicking on a link (mobile)
+            const sidebarLinks = document.querySelectorAll('.sidebar-item');
+            sidebarLinks.forEach(link => {
+                link.addEventListener
