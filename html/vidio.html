@@ -1,35 +1,25 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Putar Video</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding-top: 50px;
-        }
-
         video {
-            border: 5px solid #555;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Video Saya</h1>
-
-    <video width="640" height="360" controls>
-        <source src="video.mp4" type="video.mp4">
-        <source src="video.mp4" type="video.mp4">
-        Maaf, browser Anda tidak mendukung pemutaran video.
+    <video width="400" controls>
+        <source src="mov_bbb.mp4" type="video/mp4">
+        <source src="mov_bbb.ogg" type="video/ogg">
+        Your browser does not support HTML5 video.
     </video>
+
+    <p>Resize the browser window to see how the size of the video player will scale.</p>
 
 </body>
 
